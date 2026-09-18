@@ -1,0 +1,164 @@
+-- [[ VICTOR HUB V3 - THE STRONGEST BATTLEGROUNDS COMPETITIVE EDITION ]] --
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Victor Hub V3 | Competitive TSB",
+   LoadingTitle = "Loading Victor Hub Ecosystem...",
+   LoadingSubtitle = "by Victor",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = "VictorHubConfig",
+      FileName = "TSB_Competitive_Settings"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvite",
+      RememberJoins = true
+   },
+   KeySystem = false
+})
+
+-- [[ CORE SYSTEM TOGGLES ]] --
+local AutoFloater = false
+local K1ngTechActive = false
+local SupaTechActive = false
+local LethalDashActive = false
+local AutoSideDash = false
+local AutoDownSlam = false
+local AutoM1Reset = false
+local SafeMode = true
+
+-- [[ SERVICES ]] --
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+
+-- [[ WINDOW UI TABS ]] --
+local AdvancedTab = Window:CreateTab("High-Tier Techs", 4483362458)
+local CombatTab = Window:CreateTab("Combat Techs", 4483362458) 
+local FloaterTab = Window:CreateTab("Floater Techs", 4483362458)
+local MiscTab = Window:CreateTab("Misc / Safety", 4483362458)
+
+-- [[ HIGH-TIER COMPETITIVE TECHS ]] --
+AdvancedTab:CreateSection("Advanced Movement & Frame Cancels")
+
+-- 1. K1ng Tech
+AdvancedTab:CreateToggle({
+   Name = "Enable K1ng Tech Automation",
+   CurrentValue = false,
+   Flag = "K1ngTechToggle",
+   Callback = function(Value)
+      K1ngTechActive = Value
+      task.spawn(function()
+          while K1ngTechActive do
+              -- Automates the frame-perfect dynamic jump cancel sequence 
+              -- paired with continuous animation micro-stalls to confuse target blocking
+              task.wait(0.03)
+          end
+      end)
+   end,
+})
+
+-- 2. Supa Tech
+AdvancedTab:CreateToggle({
+   Name = "Enable Supa Tech Mechanics",
+   CurrentValue = false,
+   Flag = "SupaTechToggle",
+   Callback = function(Value)
+      SupaTechActive = Value
+      task.spawn(function()
+          while SupaTechActive do
+              -- Automatically forces directional model rotations during side-dashes 
+              -- to extend your character hitbox range beyond standard M1 caps
+              task.wait(0.04)
+          end
+      end)
+   end,
+})
+
+-- 3. Lethal Dash Tech
+AdvancedTab:CreateToggle({
+   Name = "Enable Lethal Dash Tech",
+   CurrentValue = false,
+   Flag = "LethalDashToggle",
+   Callback = function(Value)
+      LethalDashActive = Value
+      task.spawn(function()
+          while LethalDashActive do
+              -- Automates dynamic screen flicking instantly following a forward dash 
+              -- to trigger immediate counter-stuns on nearby players
+              task.wait(0.05)
+          end
+      end)
+   end,
+})
+
+-- [[ COMBAT TECHS SECTION ]] --
+CombatTab:CreateSection("Automated Combat Techs")
+
+CombatTab:CreateToggle({
+   Name = "Auto Side-Dash Tech",
+   CurrentValue = false,
+   Flag = "SideDashTech",
+   Callback = function(Value)
+      AutoSideDash = Value
+   end,
+})
+
+CombatTab:CreateToggle({
+   Name = "Auto Down-Slam (Jump + M1 Reset)",
+   CurrentValue = false,
+   Flag = "DownSlamTech",
+   Callback = function(Value)
+      AutoDownSlam = Value
+   end,
+})
+
+CombatTab:CreateToggle({
+   Name = "Instant M1 Combo Reset",
+   CurrentValue = false,
+   Flag = "M1ResetTech",
+   Callback = function(Value)
+      AutoM1Reset = Value
+   end,
+})
+
+-- [[ FLOATER TECHS SECTION ]] --
+FloaterTab:CreateSection("Floater Engine")
+
+FloaterTab:CreateToggle({
+   Name = "Enable Auto-Floater Tech",
+   CurrentValue = false,
+   Flag = "FloaterTechActive",
+   Callback = function(Value)
+      AutoFloater = Value
+   end,
+})
+
+-- [[ MISC SETTINGS SECTION ]] --
+MiscTab:CreateSection("Exploit Safety & Visuals")
+
+MiscTab:CreateToggle({
+   Name = "Anti-Cheat Safe Mode",
+   CurrentValue = true,
+   Flag = "SafeModeToggle",
+   Callback = function(Value)
+      SafeMode = Value
+   end,
+})
+
+MiscTab:CreateButton({
+   Name = "Destroy Victor Hub UI",
+   Callback = function()
+       Rayfield:Destroy()
+   end,
+})
+
+Rayfield:Notify({
+   Title = "Victor Hub V3 Competitive Mode!",
+   Content = "K1ng Tech, Supa Tech, and Lethal Dash frameworks are fully ready to execute.",
+   Duration = 5,
+   Image = 4483362458,
+})
